@@ -72,10 +72,18 @@ public class ArrayMethods
     }
     public void removeMiddle()
     {
-        int[] newSet= {};
+        int elements=0;
         if (this.values.length%2==0)
         {
-            int[] newSet=new int[this.values.length-1];
+            elements=this.values.length-1;
+        }
+        else
+        {
+            elements=this.values.length-2;
+        }
+        int[] newSet= new int[elements];
+        if (this.values.length%2==0)
+        {
             int middle=(this.values.length/2);
             for (int i=0;
                  i<middle;
@@ -91,8 +99,7 @@ public class ArrayMethods
                     }
         }
         else
-        {
-           int[] newSet=new int[this.values.length-2];
+        { 
            int middle1=(this.values.length/2)-1;
            int middle2=this.values.length/2;
            for (int i=0;
@@ -161,6 +168,64 @@ public class ArrayMethods
                     }
                 }
         return secondLargest;
+    }
+    public boolean isIncrease()
+    {
+        boolean isIncreasing = false;
+        int ticker=0;
+        for (int i=0;
+             i<this.values.length-1;
+             i++)
+             {
+                 if (this.values[i]!=0 &&
+                     this.values[i]<=this.values[i+1] &&
+                     this.values[i]>=this.values[i-1])
+                     {
+                         ticker++;
+                        }
+                }
+        if (ticker==this.values.length-1 &&
+            this.values[0]!=this.values[this.values.length-1])
+        {
+            isIncreasing=true;
+        }
+        return isIncreasing;
+    }
+    public boolean adjacentEqual()
+    {
+        boolean isEqual=false;
+        for (int i=0;
+             i<this.values.length;
+             i++)
+             {
+                 if(this.values[i]==this.values[i+1] ||
+                    this.values[i]==this.values[i-1])
+                    {
+                        isEqual=true;
+                    }
+                }
+        return isEqual;
+    }
+    public boolean isAnyEqual()
+    {
+        boolean isEqual=false;
+        for (int i=0;
+             i<this.values.length;
+             i++)
+             {
+                 int value=this.values[i];
+                 for (int r=0;
+             r<this.values.length;
+             r++)
+             {
+                 if (value==this.values[r] &&
+                     r!=i)
+                     {
+                         isEqual=true;
+                        }
+                }
+            }
+        return isEqual;
     }
 
 }
