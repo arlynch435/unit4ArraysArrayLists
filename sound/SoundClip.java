@@ -64,6 +64,20 @@ public class SoundClip
          frame.setVisible(true);
       }
    }
+   public void echo()
+   {
+       int sampleBefore=this.sampleRate*2/10;
+       for (int i=0;
+            i<this.samples.length;
+            i++)
+            {
+                if (i>=sampleBefore)
+                {
+                    this.samples[i]+=this.samples[i-sampleBefore];
+                }
+            }
+ 
+    }
 
    // -----------------------------------------------------------------
 

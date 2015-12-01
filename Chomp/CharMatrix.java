@@ -3,19 +3,29 @@
 public class CharMatrix
 {
   // Instance variables:
-
+  char[][] chocolate;
   // Constructor: creates a grid with dimensions rows, cols,
   // and fills it with spaces
   public CharMatrix(int rows, int cols)
   {
-    ...
+    chocolate= new char[rows][cols];
   }
 
   // Constructor: creates a grid with dimensions rows , cols ,
   // and fills it with the fill  character
   public CharMatrix(int rows, int cols, char fill)
   {
-    ...
+    for (int i=0;
+         i<chocolate.length;
+         i++)
+         {
+             for (int j=0;
+                  j<chocolate[i].length;
+                  j++)
+                  {
+                      chocolate[i][j]=fill;
+                    }
+            }
   }
 
   // Returns the number of rows in grid
