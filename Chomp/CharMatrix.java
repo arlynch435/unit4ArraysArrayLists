@@ -8,22 +8,34 @@ public class CharMatrix
   // and fills it with spaces
   public CharMatrix(int rows, int cols)
   {
-    chocolate= new char[rows][cols];
+    this.chocolate= new char[rows][cols];
+    for (int i=0;
+         i<this.chocolate.length;
+         i++)
+         {
+             for (int j=0;
+                  j<this.chocolate[i].length;
+                  j++)
+                  {
+                      this.chocolate[i][j]=' ';
+                    }
+            }
   }
 
   // Constructor: creates a grid with dimensions rows , cols ,
   // and fills it with the fill  character
   public CharMatrix(int rows, int cols, char fill)
   {
-    for (int i=0;
-         i<chocolate.length;
+      this.chocolate= new char[rows][cols];
+      for (int i=0;
+         i<this.chocolate.length;
          i++)
          {
              for (int j=0;
-                  j<chocolate[i].length;
+                  j<this.chocolate[i].length;
                   j++)
                   {
-                      chocolate[i][j]=fill;
+                      this.chocolate[i][j]=fill;
                     }
             }
   }
@@ -31,13 +43,15 @@ public class CharMatrix
   // Returns the number of rows in grid
   public int numRows()
   {
-    ...
+    int row=this.chocolate.length();
+    return row;
   }
 
   // Returns the number of columns in grid
   public int numCols()
   {
-    ...
+    int col=this.chocolate[0].length();
+    return col;
   }
 
   // Returns the character at row, col location
