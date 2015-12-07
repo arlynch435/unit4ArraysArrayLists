@@ -100,15 +100,29 @@ public class MagicSquares
                  diag2+=grid[j][i];
                 }
             }
+        boolean isRowEqual=false;
         if (row1==row2 &&
             row2==row3 &&
-            row3==row4 &&
-            row4==col1 &&
-            col1==col2 &&
+            row3==row4)
+            {
+                isRowEqual=true;
+            }
+        boolean isColEqual=false;
+        if (col1==col2 &&
             col2==col3 &&
-            col3==col4 &&
-            col4==diag1 &&
-            diag1=diag2)
+            col3==col4)
+            {
+                isColEqual=true;
+            }
+        boolean isDiagEqual=false;
+        if (diag1==diag2)
+            {
+                isDiagEqual=true;
+            }
+        
+        if (isRowEqual &&
+            isColEqual &&
+            isDiagEqual)
             {
                 System.out.println("This is a magic square!");
             }
