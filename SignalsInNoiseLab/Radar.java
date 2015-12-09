@@ -34,7 +34,8 @@ public class Radar
     public Radar(int rows, int cols)
     {
         // initialize the currentScan 2D array and the accumulator 2D array
-        
+        this.currentScan= new boolean[rows][cols];
+        this.accumulator= new int[rows][cols];
         
         //
         // !!! add code here !!!
@@ -58,17 +59,38 @@ public class Radar
     {
         // algorithm for performing a scan:
         //    1. set all cells in the currentScan 2D array to false
+         for (int i=0;
+             i<this.currentScan.length;
+             i++)
+             {
+                 for (int j=0;
+                      j<this.currentScan[i].length;
+                      j++)
+                      {
+                          this.currentScan[i][j]=false;
+                        }
+                    }
         //    2. set the location of the monster in the currentScan 2D array
+        this.currentScan[this.monsterLocationRow][this.monsterLocationCol]=true;
         //    3. inject noise into the grid
+        this.injectNoise();
         //    4. update the accumulator 2D array based on the state of the currentScan 2D array
+        for (int i=0;
+             i<this.currentScan.length;
+             i++)
+             {
+                 for (int j=0;
+                      j<this.currentScan[i].length;
+                      j++)
+                      {
+                          if(this.currentScan[i][j]==true)
+                          {
+                              this.accumulator[i][j]++;
+                            }
+                        }
+                    }
         //    5. increment the numScans instance variable
-        
-        
-        //
-        // !!! add code here !!!
-        //
-        
-        
+       this.numScans++;
     }
 
     /**
@@ -168,7 +190,21 @@ public class Radar
         
         
         //
-        // !!! add code here !!!
+        for (int i=0;
+             i<this.currentScan.length;
+             i++)
+             {
+                 for (int j=0;
+                      j<this.currentScan[i].length;
+                      j++)
+                      {
+                          double checker=Math.random();
+                          if (checker<=this.noiseFraction)
+                          {
+                              this.currentScan[i][j]=true;
+                            }
+                        }
+                    }
         //
         
         
