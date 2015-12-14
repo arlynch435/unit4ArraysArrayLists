@@ -71,7 +71,7 @@ public class Radar
                         }
                     }
         //    2. set the location of the monster in the currentScan 2D array
-        this.currentScan[this.monsterLocationRow][this.monsterLocationCol]=true;
+        this.setMonsterLocation(this.monsterLocationRow, this.monsterLocationCol);
         //    3. inject noise into the grid
         this.injectNoise();
         //    4. update the accumulator 2D array based on the state of the currentScan 2D array
