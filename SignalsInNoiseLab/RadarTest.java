@@ -13,8 +13,6 @@ import org.junit.Test;
  */
 public class RadarTest
 {
-    /** description of instance variable x (add comment for each instance variable) */
-    private int x;
 
     /**
      * Default constructor for objects of class RadarTest
@@ -45,7 +43,9 @@ public class RadarTest
     @Test
     public void testOneMonster()
     {
-        Radar testRadar=new Radar(100,100);
+        final int ROWS = 100;
+        final int COLS = 100;
+        Radar testRadar = new Radar(ROWS, COLS);
         testRadar.setMonsterLocation(50,50);
         for (int i=0;
              i<100;
@@ -53,9 +53,27 @@ public class RadarTest
              {
                  testRadar.scan();
                 }
+//         int largestRow=0;
+//         int largestColumn=0;
+//         int largestAccumulated=0;
+//         for (int i=0;
+//              i<testRadar.getNumRows();
+//              i++)
+//              {
+//                  for (int j=0;
+//                       j<testRadar.getNumCols();
+//                       i++)
+//              {
+//                  if (testRadar.getAccumulatedDetection(i,j)>largestAccumulated)
+//                  {
+//                      largestAccumulated=testRadar.getAccumulatedDetection(i,j);
+//                      largestRow=i;
+//                      largestColumn=j;
+//                     }
+//                 }
+//             }
         int largestRow=0;
         int largestColumn=0;
-        int largestAccumulated=0;
         for (int i=0;
              i<testRadar.getNumRows();
              i++)
@@ -64,18 +82,15 @@ public class RadarTest
                       j<testRadar.getNumCols();
                       i++)
              {
-                 if (testRadar.getAccumulatedDetection(i,j)>largestAccumulated)
+                 if (testRadar.getAccumulatedDetection(i,j)==100)
                  {
-                     largestAccumulated=testRadar.getAccumulatedDetection(i,j);
                      largestRow=i;
                      largestColumn=j;
                     }
                 }
             }
-        if(largestRow == 50 && largestColumn == 50)
-            {
-                
-            }
+        assertEquals(50,largestRow);
+        assertEquals(50,largestColumn);
     }
 
 }
