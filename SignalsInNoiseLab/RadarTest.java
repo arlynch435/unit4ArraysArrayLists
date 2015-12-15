@@ -53,37 +53,20 @@ public class RadarTest
              {
                  testRadar.scan();
                 }
-//         int largestRow=0;
-//         int largestColumn=0;
-//         int largestAccumulated=0;
-//         for (int i=0;
-//              i<testRadar.getNumRows();
-//              i++)
-//              {
-//                  for (int j=0;
-//                       j<testRadar.getNumCols();
-//                       i++)
-//              {
-//                  if (testRadar.getAccumulatedDetection(i,j)>largestAccumulated)
-//                  {
-//                      largestAccumulated=testRadar.getAccumulatedDetection(i,j);
-//                      largestRow=i;
-//                      largestColumn=j;
-//                     }
-//                 }
-//             }
         int largestRow=0;
         int largestColumn=0;
+        int largestAccumulated=0;
         for (int i=0;
              i<testRadar.getNumRows();
              i++)
              {
                  for (int j=0;
                       j<testRadar.getNumCols();
-                      i++)
+                      j++)
              {
-                 if (testRadar.getAccumulatedDetection(i,j)==100)
+                 if (testRadar.getAccumulatedDetection(i,j)>largestAccumulated)
                  {
+                     largestAccumulated=testRadar.getAccumulatedDetection(i,j);
                      largestRow=i;
                      largestColumn=j;
                     }
