@@ -17,25 +17,24 @@ public class ManyMonsters
     /**
      * Default constructor for objects of class Monster
      * @pre The length of the arrays must not be larger than the length of the radar sizes
-     * @param   x    the array of row coordinates for the monsters
-     * @param   y    the array of column cooordinates for the monsters
+     * @param   x    how many monsters are in the radar
      */
-    public ManyMonsters(int x, int y)
+    public ManyMonsters(int x)
     {
         // initialise instance variables
         this.row= new int[x];
-        this.col= new int[y];
+        this.col= new int[x];
         this.ticker=0;
     }
 
     /**
-     * Sets the row and column of the monster.
+     * Sets the row and column of a new monster.
      *
      * @pre        the parameters are within the radar size and ticker < array length
      * @param    x    the row index value
      * @param    y    the column index value
      */
-    public void setPosition(int x, int y)
+    public void setNewMonster(int x, int y)
     {
         // put your code here
         this.row[ticker]=x;

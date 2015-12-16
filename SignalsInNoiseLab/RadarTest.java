@@ -41,7 +41,11 @@ public class RadarTest
     {
     }
     @Test
-    public void testOneMonster()
+    /**
+     * tests for one mosnter location at (50,50)
+     * only works in code where ManyMonsters is not present
+     */
+    public void testOneMonster5050()
     {
         final int ROWS = 100;
         final int COLS = 100;
@@ -74,6 +78,45 @@ public class RadarTest
             }
         assertEquals(50,largestRow);
         assertEquals(50,largestColumn);
+    }
+    @Test
+    /**
+     * tests for one mosnter location at (42,42)
+     * only works in code where ManyMonsters is not present
+     */
+    public void testOneMonster4242()
+    {
+        final int ROWS = 100;
+        final int COLS = 100;
+        Radar testRadar = new Radar(ROWS, COLS);
+        testRadar.setMonsterLocation(42,42);
+        for (int i=0;
+             i<100;
+             i++)
+             {
+                 testRadar.scan();
+                }
+        int largestRow=0;
+        int largestColumn=0;
+        int largestAccumulated=0;
+        for (int i=0;
+             i<testRadar.getNumRows();
+             i++)
+             {
+                 for (int j=0;
+                      j<testRadar.getNumCols();
+                      j++)
+             {
+                 if (testRadar.getAccumulatedDetection(i,j)>largestAccumulated)
+                 {
+                     largestAccumulated=testRadar.getAccumulatedDetection(i,j);
+                     largestRow=i;
+                     largestColumn=j;
+                    }
+                }
+            }
+        assertEquals(42,largestRow);
+        assertEquals(42,largestColumn);
     }
 
 }

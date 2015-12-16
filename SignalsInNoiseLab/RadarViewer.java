@@ -1,5 +1,5 @@
 import javax.swing.JFrame;
-
+import java.util.Scanner;
 /**
  * Class that contains the main method for the program and creates the frame containing the component.
  * 
@@ -19,8 +19,18 @@ public class RadarViewer
         final int COLS = 100;
         Radar radar = new Radar(ROWS, COLS);
         radar.setNoiseFraction(0.10);
+        //THE FOLLOWING COMMENTED CODE ONLY WORKS WITH ONE MONSTER
+        //  Scanner s=new Scanner(System.in);
+        //  int monsterRow=0;
+        //  int monsterCol=0;
+        //  System.out.print("Type in the coordinates for a mosnter or a letter to randomize its location ");
+        //  if (s.hasNextInt()==true)
+        //  {
+        //      monsterRow=s.nextInt();
+        //      monsterCol=s.nextInt();
+        //   }
+        //   radar.setMonsterLocation(monsterRow,monsterCol);
         radar.scan();
-        
         JFrame frame = new JFrame();
         
         frame.setTitle("Signals in Noise Lab");

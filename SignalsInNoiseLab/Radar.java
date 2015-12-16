@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 /**
  * The model for radar scan and accumulator
  * 
@@ -24,9 +24,11 @@ public class Radar
     
     // number of scans of the radar since construction
     private int numScans;
+    // The monsters in the radar
+    private ManyMonsters monsters;
 
     /**
-     * Constructor for objects of class Radar
+     * Constructor for objects of class Radar with a random monster location
      * 
      * @param   rows    the number of rows in the radar grid
      * @param   cols    the number of columns in the radar grid
@@ -38,14 +40,26 @@ public class Radar
         this.accumulator= new int[rows][cols];
         
         //
+        Scanner s=new Scanner(System.in);
+        System.out.print("How many monsters do you want? ");
+        int numMonsters=s.nextInt();
+        this.monsters= new ManyMonsters(numMonsters);
+        for (int i=0;
+             i<numMonsters;
+             i++)
+             {
+                 int newRow=(int)(Math.random()*rows);
+                 int newCol = (int)(Math.random() * cols);
+                 this.monsters.setNewMonster(newRow,newCol);
+                }
         // !!! add code here !!!
         //
         
         
         // randomly set the location of the monster (can be explicity set through the
         //  setMonsterLocation method for the unit test
-        monsterLocationRow = (int)(Math.random() * rows);
-        monsterLocationCol = (int)(Math.random() * cols);
+        //monsterLocationRow = (int)(Math.random() * rows);
+        //monsterLocationCol = (int)(Math.random() * cols);
         
         noiseFraction = 0.05;
         numScans= 0;
@@ -71,7 +85,13 @@ public class Radar
                         }
                     }
         //    2. set the location of the monster in the currentScan 2D array
-        this.setMonsterLocation(this.monsterLocationRow, this.monsterLocationCol);
+        for (int i=0;
+             i<this.monsters.getRow().length;
+             i++)
+             {
+                     this.setMonsterLocation(this.monsters.getRow()[i], this.monsters.getCol()[i]);
+                }
+        //this.setMonsterLocation(this.monsterLocationRow, this.monsterLocationCol);
         //    3. inject noise into the grid
         this.injectNoise();
         //    4. update the accumulator 2D array based on the state of the currentScan 2D array
